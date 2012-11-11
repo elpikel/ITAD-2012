@@ -1,0 +1,21 @@
+﻿@model ITAD_2012.Models.Questionnaire
+@helper YesNoRadioButtons()
+{
+    @Html.RadioButtonFor(m => m.Answer, true)
+    <label>Yes</label>
+    @Html.RadioButtonFor(m => m.Answer, false)
+    <label>No</label>
+}
+
+@using (Html.BeginForm("Save", "Questionnaire"))
+{
+    @Html.HiddenFor(m => m.Question)
+    
+    @Model.Question<br />
+    
+    @YesNoRadioButtons()
+    @Html.TextBoxFor(m => m.Email)
+    @Html.ValidationMessageFor(model => model.Email)
+
+    <input type="submit" value="Save" />
+}
